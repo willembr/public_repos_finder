@@ -1,15 +1,12 @@
-import logo from './logo.svg';
-import styles from './App.module.scss';
-import User from './Containers/User/User';
 import { BrowserRouter } from 'react-router-dom';
+import Main from './Containers/Main/Main';
 
 
 function App() {
   return (
-    <div className={styles.App}>
+    <div>
       <BrowserRouter>
-        <h1 className={styles.Title}>Public Repository Finder</h1>
-        <User/>
+        <Main/>
       </BrowserRouter>  
     </div>
   );
