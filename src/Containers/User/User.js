@@ -19,7 +19,8 @@ class User extends Component{
                 },
                 valid:false,
                 touched:false
-            }
+            },
+            error:false
         } 
 
     checkValidation(value,rules){
@@ -67,16 +68,21 @@ class User extends Component{
                  updatedUserName.valid = false;
                  updatedUserName.touched = false;
                  this.setState({
-                     userName:updatedUserName
+                     userName:updatedUserName,
+                     error:false
                  });
                  this.props.history.push(`/${response.data.login}`);
              })
              .catch( error => {
-                 console.log(error);
+                 this.setState({
+                     error:true
+                 });
              });
     }
 
     render(){
+        let errorMessage = "";
+        if(this.state.error) errorMessage = <p>We couldn't found any Github user, please try again!</p>
         return(
             <section className={styles.User}> 
             <UserSearch
@@ -84,6 +90,7 @@ class User extends Component{
                 changed = { this.inputChangedHandler }
                 search = { this.searchUserHandler }
                 />
+            {errorMessage}
             </section>
         );
     }
