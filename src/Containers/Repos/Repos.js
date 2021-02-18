@@ -59,10 +59,10 @@ class Repos extends Component{
         if(this.state.repos.length > 0 && (this.state.user === this.props.match.params.user)) content = <Repositories repos = {this.state.repos}/>
         if(this.state.error || this.state.repos.length === 0 ) errorMessage = <p>We couldn't find any Repos</p>;
         return(
-            <p>
+            <>
             {content}
             {errorMessage}
-            </p>
+            </>
         );
     }
 };
