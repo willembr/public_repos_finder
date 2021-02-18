@@ -12,7 +12,7 @@ const UserSearch = (props) => {
                     />;
     const submit = <button 
                         disabled={ !props.input.valid }
-                        onClick = { props.Search }
+                        onClick = { () => props.search(props.input.value) }
                         >Search</button>;
     return(
         <div className={styles.UserSearch}>

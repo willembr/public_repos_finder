@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
-import UserSearch from '../../Components/UserSearch/UserSearch';
 import styles from './User.module.scss';
+
+import UserSearch from '../../Components/UserSearch/UserSearch';
+import Axios from '../../hoc/Axios';
 
 class User extends Component{
     state={
@@ -20,7 +22,7 @@ class User extends Component{
             }
         } 
 
-        checkValidation(value,rules){
+    checkValidation(value,rules){
             let isValid = true;
 
             if(!rules)
@@ -54,16 +56,23 @@ class User extends Component{
         });
     }
 
-    searchUserHandler = () => {
+    searchUserHandler = ( user ) => {
 
+        const url = `users/${user}`;
+
+        Axios.get(url)
+             .then( response => {
+                 console.log(response.data);
+             })
     }
 
     render(){
         return(
             <section className={styles.User}> 
             <UserSearch
-                input = {this.state.userName}
-                changed = {this.inputChangedHandler}
+                input = { this.state.userName }
+                changed = { this.inputChangedHandler }
+                search = { this.searchUserHandler }
                 />
             </section>
         );
