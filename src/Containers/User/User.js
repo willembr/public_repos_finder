@@ -62,7 +62,14 @@ class User extends Component{
 
         Axios.get(url)
              .then( response => {
-                 console.log(response.data);
+                 const updatedUserName = { ...this.state.userName };
+                 updatedUserName.value = "";
+                 updatedUserName.valid = false;
+                 updatedUserName.touched = false;
+                 this.setState({
+                     userName:updatedUserName
+                 });
+                 this.props.history.push(`/${response.data.login}`);
              })
              .catch( error => {
                  console.log(error);

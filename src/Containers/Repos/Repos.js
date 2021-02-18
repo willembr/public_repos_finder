@@ -4,12 +4,15 @@ import { setDate, setHour, setCapitalLetter } from '../../Functions/Output';
 
 class Repos extends Component{
     state = {
-        repos : []
+        repos : [],
+        user: ''
     }
 
-    componentDidMount(){
-        if(this.props.match.params.user){
-            const url = `users/${this.props.match.params.user}/repos`
+     componentDidMount(){ this.getReposHandler(this.props.match.params.user);}
+     componentDidUpdate(){ if(this.newSearch()) this.getReposHandler(this.props.match.params.user);}
+     
+     getReposHandler = (user) => {
+            const url = `users/${user}/repos`
             Axios.get(url)
                  .then( response => {
                     const updatedRepositories = response.data.map( repository => {
@@ -24,17 +27,24 @@ class Repos extends Component{
                             creationHour: setHour(created)
                         }
                     });
-                    this.setState({
-                        repos:updatedRepositories
-                    });
+                     this.setState({
+                         repos:updatedRepositories,
+                         user: user
+                     });
                  })
                  .catch( error => {
                      console.log(error);
                  })
         }
-    }
+      newSearch(){ 
+           return this.state.user !== this.props.match.params.user;
+        }
+
     render(){
-        console.log(this.state.repos);
+         if( this.newSearch() )
+         {
+            console.log('new post');
+         }
         return(
             <div>
 
