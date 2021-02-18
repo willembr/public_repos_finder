@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import Axios from '../../hoc/Axios';
+import { setDate, setHour } from '../../Functions/Output';
 
 class Repos extends Component{
     state = {
@@ -11,14 +12,16 @@ class Repos extends Component{
             const url = `users/${this.props.match.params.user}/repos`
             Axios.get(url)
                  .then( response => {
-                    console.log(response.data);
                     const updatedRepositories = response.data.map( repository => {
+                        const created = repository.created_at;
                         return {
                             title: repository.name,
                             description: repository.description,
                             stars:repository.stargazers_count,
                             watchers:repository.watchers_count,
-                            forks:repository.forks_count
+                            forks:repository.forks_count,
+                            creationDate: setDate(created),
+                            creationHour: setHour(created)
                         }
                     });
                     this.setState({
