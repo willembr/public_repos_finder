@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import Axios from '../../hoc/Axios';
-import { setDate, setHour } from '../../Functions/Output';
+import { setDate, setHour, setCapitalLetter } from '../../Functions/Output';
 
 class Repos extends Component{
     state = {
@@ -15,8 +15,8 @@ class Repos extends Component{
                     const updatedRepositories = response.data.map( repository => {
                         const created = repository.created_at;
                         return {
-                            title: repository.name,
-                            description: repository.description,
+                            title: setCapitalLetter(repository.name),
+                            description: setCapitalLetter(repository.description),
                             stars:repository.stargazers_count,
                             watchers:repository.watchers_count,
                             forks:repository.forks_count,
