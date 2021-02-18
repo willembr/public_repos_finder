@@ -1,21 +1,50 @@
 %content-shared{
-    width:400px;
     border:1px solid #eee;
     box-shadow: 0 2px 3px #ccc;
     box-sizing: border-box;
 }  
 .Repository{
     @extend %content-shared;
-    margin:10px 0 20px;
+    height:179px;
+    flex-basis: 100%;
+    align-self: flex-start;
+    -ms-flex: auto;
+    position: relative;
+    box-sizing: border-box;
     cursor: pointer;
-    & .CreationDate{
-        @extend %content-shared;
-        padding: 6px;
-        background-color: #eee;
-        font-size: 0.9em;
-        margin-top: 20px;
-    }
+    margin:10px 0;
     & .Title{
         font-size: 1.4em;
+        text-align: center;
+        margin:13px 0 0 0;
+    }
+    & .Description{
+        height: 35px;
+        overflow: hidden;
+        margin: 0 0 -3px;
+        padding: 10px 27px;
+        text-align: center;
+    }
+    & .CreationDate{
+        @extend %content-shared;
+        background-color: #eee;
+        font-size: 0.9em;
+        margin-top:32px;
     }
 }
+
+@media(max-width: 1332px) {
+    .Repository {
+      flex-basis: 49%;
+    }
+  }
+  @media(max-width: 815px) {
+    .Repository {
+      flex-basis: 100%;
+    }
+  }
+  @media(min-width: 1334px) {
+    .Repository {
+      flex-basis:30%;
+    }
+  }
