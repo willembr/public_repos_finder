@@ -7,3 +7,8 @@ export function setDate(full_date){
 export function setHour(full_date){
     return moment(full_date).format("HH:MM");
 };
+
+export function setCapitalLetter(text){
+    if(!text) return;
+    return text.substring(0,1).toUpperCase() + text.substring(1);
+}
