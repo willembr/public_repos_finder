@@ -100,7 +100,13 @@ class User extends Component{
 
     render(){
         let errorMessage = "";
-        if(this.state.error) errorMessage = <p>We couldn't found any Github user, please try again!</p>
+
+        if( this.state.userName.value !== '' && !this.state.userName.valid && this.state.userName.touched) 
+        errorMessage = <p>GitHub username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen!</p>
+
+        if(this.state.error) 
+        errorMessage = <p>We couldn't found any Github user, please try again!</p>
+
         return(
             <section className={styles.User}> 
                 <UserSearch
