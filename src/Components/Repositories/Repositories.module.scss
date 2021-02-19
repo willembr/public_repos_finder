@@ -4,4 +4,8 @@
     justify-content: flex-start;
     margin: 20px auto;
     width:80%;
+    & .ErrorMessage{
+        width: 100%;
+        text-align: center;
+    }
 }
