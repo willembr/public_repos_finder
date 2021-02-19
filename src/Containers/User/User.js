@@ -58,6 +58,8 @@ class User extends Component{
     }
 
     searchUserHandler = ( user ) => {
+        // No component update when the user searches the same name
+        if(this.props.location.pathname.replace('/','') === user) return;
 
         const url = `users/${user}`;
 
