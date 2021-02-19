@@ -9,7 +9,7 @@ const Repository = (props) => {
     const creationDate = <p>Created on {props.creationDate} {props.creationHour}</p>
 
     return(
-        <article className={styles.Repository}>
+        <article className={styles.Repository} onClick={props.clicked}>
             {title}
             {description}
             <div className={styles.CreationDate}>
