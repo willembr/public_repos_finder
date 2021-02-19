@@ -4,6 +4,7 @@ import styles from './User.module.scss';
 import UserSearch from '../../Components/UserSearch/UserSearch';
 import Axios from '../../hoc/Axios';
 
+
 class User extends Component{
     state={
             userName: {
@@ -20,7 +21,8 @@ class User extends Component{
                 valid:false,
                 touched:false
             },
-            error:false
+            error:false,
+            loading:false
         } 
 
     checkValidation(value,rules){
@@ -61,39 +63,54 @@ class User extends Component{
         // No component update when the user searches the same name
         if(this.props.location.pathname.replace('/','') === user) return;
 
-        const url = `users/${user}`;
+        this.setState({ loading:true });
 
-        Axios.get(url)
+        const url = `users/${user}`;
+        const updatedUserName = this.clearSearchField(this.state.userName);
+        setTimeout(()=> {
+            Axios.get(url)
              .then( response => {
-                 const updatedUserName = { ...this.state.userName };
-                 updatedUserName.value = "";
-                 updatedUserName.valid = false;
-                 updatedUserName.touched = false;
                  this.setState({
                      userName:updatedUserName,
+                     loading:false,
                      error:false
                  });
                  this.props.history.push(`/${response.data.login}`);
              })
              .catch( error => {
                  this.setState({
+                     userName:updatedUserName,
+                     loading:false,
                      error:true
                  });
                  this.props.history.push(`no_user`);
+                 return error;
              });
+        },1000);
+        
+    }
+
+    clearSearchField(field){
+        const updatedField = { ...field };
+        updatedField.value = "";
+        updatedField.valid = false;
+        updatedField.touched = false;
+        return updatedField;
     }
 
     render(){
+        console.log(this.state.loading);
         let errorMessage = "";
         if(this.state.error) errorMessage = <p>We couldn't found any Github user, please try again!</p>
         return(
             <section className={styles.User}> 
-            <UserSearch
-                input = { this.state.userName }
-                changed = { this.inputChangedHandler }
-                search = { this.searchUserHandler }
+                <UserSearch
+                    input = { this.state.userName }
+                    loading = { this.state.loading }
+                    changed = { this.inputChangedHandler }
+                    search = { this.searchUserHandler }
                 />
-            {errorMessage}
+                {errorMessage}
             </section>
         );
     }
