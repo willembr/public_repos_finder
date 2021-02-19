@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import Axios from '../../hoc/Axios';
+import Axios from '../../Hoc/Axios';
 import { setDate, setHour, setCapitalLetter } from '../../Functions/Output';
 import Repositories from '../../Components/Repositories/Repositories';
 
