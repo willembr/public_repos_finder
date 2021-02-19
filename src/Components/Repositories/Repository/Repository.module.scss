@@ -25,6 +25,9 @@
         margin: 0 0 -3px;
         padding: 10px 27px;
         text-align: center;
+        & i {
+            color:#bbb;
+        }
     }
     & .CreationDate{
         @extend %content-shared;
