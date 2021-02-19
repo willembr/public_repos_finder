@@ -10,7 +10,7 @@ class Main extends Component{
             <section className={styles.Main}>
                 <h1 className={styles.Title}>Public Repository Finder</h1>
                 <Route path="/" component={ User } />
-                <Route path="/:user" component={ Repos } />
+                <Route path="/:user" exact component={ Repos } />
             </section>
         );
     }
