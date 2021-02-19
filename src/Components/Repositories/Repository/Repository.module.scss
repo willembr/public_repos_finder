@@ -7,13 +7,13 @@
     @extend %content-shared;
     height:179px;
     flex-basis: 100%;
-    align-self: flex-start;
-    -ms-flex: auto;
     position: relative;
     box-sizing: border-box;
     cursor: pointer;
-    margin:10px 0;
+    margin:10px;
     & .Title{
+        height:30px;
+        overflow: hidden;
         font-size: 1.4em;
         text-align: center;
         margin:13px 0 0 0;
@@ -36,7 +36,7 @@
 
 @media(max-width: 1332px) {
     .Repository {
-      flex-basis: 49%;
+      flex-basis: 45%;
     }
   }
   @media(max-width: 815px) {
