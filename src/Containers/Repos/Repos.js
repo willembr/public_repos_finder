@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import Axios from '../../hoc/Axios';
 import { setDate, setHour, setCapitalLetter } from '../../Functions/Output';
-import Spinner from '../../Components/UI/Spinner/Spinner';
 import Repositories from '../../Components/Repositories/Repositories';
 
 
@@ -10,8 +9,8 @@ class Repos extends Component{
     state = {
         repos : [],
         user: '',
-        loading:false,
-        error:false
+        noUser:false,
+        noRepos:false
     }
 
     componentDidMount(){ this.getRepos(this.props.match.params.user) }
@@ -23,13 +22,16 @@ class Repos extends Component{
         }
 
     getRepos = async(user) => {
+        // When there isn't a match on user
+        if( user === "no_user") return this.setState({noUser : true, user:user});
+
         const url = `users/${user}/repos`;
         let response = '';
         
             try{
                 response = await Axios.get(url);
             } catch (error) {
-                this.setState({error:true})
+                this.setState({noRepos:true})
             }
             const updatedRepositories = await response.data.map( 
                 repository => {
@@ -46,22 +48,22 @@ class Repos extends Component{
                              });
               this.setState({
                     repos:updatedRepositories,
-                    loading:false,
                     user:user,
-                    error:false
+                    noUser:false,
+                    noRepos: updatedRepositories.length <= 0
              })
 
    
     }
 
     render(){
-        let content,errorMessage = "";
-        if(this.state.repos.length > 0 && (this.state.user === this.props.match.params.user)) content = <Repositories repos = {this.state.repos}/>
-        if(this.state.error || this.state.repos.length === 0 ) errorMessage = <p>We couldn't find any Repos</p>;
+        let content = "";
+        if(this.state.user === this.props.match.params.user) 
+        content = <Repositories repos = { this.state.repos } noUser = { this.state.noUser } noRepos = { this.state.noRepos } />
+
         return(
             <>
             {content}
-            {errorMessage}
             </>
         );
     }
