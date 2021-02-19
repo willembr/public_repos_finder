@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
-import reposReducer from './store/reducers/Repos';
-import commitsReducer from './store/reducers/Commits';
+import reposReducer from './Store/Reducers/Repos';
+import commitsReducer from './Store/Reducers/Commits';
 import { Provider } from 'react-redux';
 
 import './index.css';

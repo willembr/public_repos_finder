@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import styles from './User.module.scss';
 
 import UserSearch from '../../Components/UserSearch/UserSearch';
-import Axios from '../../hoc/Axios';
+import Axios from '../../Hoc/Axios';
 
 
 class User extends Component{
