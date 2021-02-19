@@ -77,6 +77,7 @@ class User extends Component{
                  this.setState({
                      error:true
                  });
+                 this.props.history.push(`no_user`);
              });
     }
 
