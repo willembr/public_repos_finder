@@ -56,11 +56,19 @@ class Repos extends Component{
    
     }
 
+    repositoryClickHandler = (repository) => {
+        this.props.history.push(`${this.props.match.url}/${repository}`);
+    }
+
     render(){
         let content = "";
         if(this.state.user === this.props.match.params.user) 
-        content = <Repositories repos = { this.state.repos } noUser = { this.state.noUser } noRepos = { this.state.noRepos } />
-
+        content = <Repositories 
+                        repos = { this.state.repos } 
+                        noUser = { this.state.noUser } 
+                        noRepos = { this.state.noRepos } 
+                        clicked = { this.repositoryClickHandler }
+                        />
         return(
             <>
             {content}
