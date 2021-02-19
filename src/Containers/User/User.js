@@ -99,7 +99,6 @@ class User extends Component{
     }
 
     render(){
-        console.log(this.state.loading);
         let errorMessage = "";
         if(this.state.error) errorMessage = <p>We couldn't found any Github user, please try again!</p>
         return(
