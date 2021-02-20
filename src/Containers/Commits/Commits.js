@@ -4,26 +4,29 @@ import * as actionCreators from '../../Store/Actions/Index';
 
 class Commits extends Component{
     componentDidMount(){
-        this.props.onSetCommits();
+        const params = this.props.match.params;
+        this.props.onSetCommits(params.user,params.repos);
     }
     render(){
+        console.log(this.props.commits);
         return(
-            <div>
-                <p>commits</p>
-            </div>
+            <>
+                
+            </>
         );
     }
 };
 
 const mapStateToProps = state => {
     return{
+        userName : state.userRed.user.userName,
         commits : state.commitsRed.commits
     }
 }
 
 const mapActionsToProps = dispatch => {
     return {
-        onSetCommits: () => dispatch(actionCreators.getCommits('willembr','Mywebsite'))
+        onSetCommits: (user,repos) => dispatch(actionCreators.getCommits(user,repos))
     }
 }
 
