@@ -12,3 +12,8 @@ export function setCapitalLetter(text){
     if(!text) return;
     return text.substring(0,1).toUpperCase() + text.substring(1);
 }
+
+export function getPartOfString(text,start,end){
+    if(!text) return;
+    return text.substring(start,end);
+}   
