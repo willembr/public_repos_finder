@@ -8,7 +8,6 @@ export const setReposSucces = ( repos ) => { return { type : actionTypes.GET_REP
 
 export const getRepos = ( user ) => {
     return dispatch => {
-        console.log(user);
         dispatch(setReposStart());
         const url = `users/${user}/repos`;
         Axios.get(url)

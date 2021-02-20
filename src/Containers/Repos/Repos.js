@@ -30,7 +30,7 @@ class Repos extends Component{
         content = <Repositories 
                              repos={ this.props.repos } 
                              noRepos = { this.props.repos.length <= 0 }
-                             clicked={ this.repositoryClickHandler } 
+                             clicked = { this.repositoryClickHandler } 
                              />;
         
         return(
