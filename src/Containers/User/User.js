@@ -78,17 +78,12 @@ class User extends Component{
          let errorMessage = "";
 
          if( this.state.userName.value !== '' && !this.state.userName.valid && this.state.userName.touched) 
-         errorMessage = <p>GitHub username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen!</p>
+         errorMessage = "GitHub username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen!";
 
-         if(this.props.error) 
-         errorMessage = <p>We couldn't found any Github user, please try again!</p>
+         if(this.props.error) errorMessage = "We couldn't found any Github user, please try again!"
 
-         let content="";
+         let redirect = this.props.user ? <Redirect to={`${this.props.user.userName}`} /> : null;
          
-         if(this.props.user){
-            content = <Redirect to={`${this.props.user.userName}`} />;
-         } 
-
         return(
             <section className={styles.User}> 
                 <UserSearch
@@ -97,8 +92,10 @@ class User extends Component{
                     changed = { this.inputChangedHandler }
                     search = { this.searchUserHandler }
                 />
+                <p className={styles.Error}>
                 {errorMessage}
-                {content}
+                {redirect}
+                </p>
             </section>
         );
     }

@@ -1,4 +1,7 @@
 .User{
     flex:1 1 100%;
     text-align: center;
+    & .Error{
+        color:#c53543;
+    }
 }
