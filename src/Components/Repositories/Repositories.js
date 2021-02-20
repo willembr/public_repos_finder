@@ -4,7 +4,6 @@ import Repository from './Repository/Repository';
 
 const Repositories = (props) => {
     let repositories, errorMessage = "";
-
     if(!props.noReps && !props.noUser)
         repositories = props.repos.map( repository => {
                             return <Repository

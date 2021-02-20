@@ -1,8 +1,10 @@
 import React,{Component} from 'react';
 import styles from './User.module.scss';
+import {Redirect} from 'react-router-dom';
 
 import UserSearch from '../../Components/UserSearch/UserSearch';
-import Axios from '../../Hoc/Axios';
+import { connect } from 'react-redux';
+import * as actionCreators from '../../Store/Actions/Index';
 
 
 class User extends Component{
@@ -20,9 +22,7 @@ class User extends Component{
                 },
                 valid:false,
                 touched:false
-            },
-            error:false,
-            loading:false
+            }
         } 
 
     checkValidation(value,rules){
@@ -60,34 +60,9 @@ class User extends Component{
     }
 
     searchUserHandler = ( user ) => {
-        // No component update when the user searches the same name
-        if(this.props.location.pathname.replace('/','') === user) return;
-
-        this.setState({ loading:true });
-
-        const url = `users/${user}`;
         const updatedUserName = this.clearSearchField(this.state.userName);
-        setTimeout(()=> {
-            Axios.get(url)
-             .then( response => {
-                 this.setState({
-                     userName:updatedUserName,
-                     loading:false,
-                     error:false
-                 });
-                 this.props.history.push(`/${response.data.login}`);
-             })
-             .catch( error => {
-                 this.setState({
-                     userName:updatedUserName,
-                     loading:false,
-                     error:true
-                 });
-                 this.props.history.push(`no_user`);
-                 return error;
-             });
-        },1000);
-        
+        this.setState({ userName: updatedUserName });
+        this.props.onGetUser(user);
     }
 
     clearSearchField(field){
@@ -99,26 +74,48 @@ class User extends Component{
     }
 
     render(){
-        let errorMessage = "";
 
-        if( this.state.userName.value !== '' && !this.state.userName.valid && this.state.userName.touched) 
-        errorMessage = <p>GitHub username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen!</p>
+         let errorMessage = "";
 
-        if(this.state.error) 
-        errorMessage = <p>We couldn't found any Github user, please try again!</p>
+         if( this.state.userName.value !== '' && !this.state.userName.valid && this.state.userName.touched) 
+         errorMessage = <p>GitHub username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen!</p>
+
+         if(this.props.error) 
+         errorMessage = <p>We couldn't found any Github user, please try again!</p>
+
+         let content="";
+         
+         if(this.props.user){
+            content = <Redirect to={`${this.props.user.userName}`} />;
+         } 
 
         return(
             <section className={styles.User}> 
                 <UserSearch
                     input = { this.state.userName }
-                    loading = { this.state.loading }
+                    loading = { this.props.loading }
                     changed = { this.inputChangedHandler }
                     search = { this.searchUserHandler }
                 />
                 {errorMessage}
+                {content}
             </section>
         );
     }
 };
 
-export default User;
+const mapStateToProps = state => {
+    return {
+        user: state.userRed.user,
+        lastUserName: state.userRed.lastUserName,
+        error: state.userRed.error
+    }
+}
+
+const mapActionsToProps = dispatch => {
+    return{
+        onGetUser: (user) => dispatch( actionCreators.getUser(user))
+    }
+}
+
+export default connect(mapStateToProps, mapActionsToProps)(User);

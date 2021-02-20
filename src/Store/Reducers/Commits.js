@@ -1,9 +1,13 @@
+import * as actionTypes from '../Actions/ActionTypes';
+
+
 const initialState = {
-    commits:null
+    commits:null,
+    loading:false
 }
 
-const reducer = ( state = initialState, action ) => {
-    return state;
+const reducer = ( state = initialState, action ) => {   
+         return state;    
 }
 
 export default reducer;
