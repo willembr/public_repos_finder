@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
+import userReducer from './Store/Reducers/User';
 import reposReducer from './Store/Reducers/Repos';
 import commitsReducer from './Store/Reducers/Commits';
 import { Provider } from 'react-redux';
@@ -12,6 +13,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const rootReducer = combineReducers({
+    userRed: userReducer, 
     reposRed: reposReducer,
     commitsRed: commitsReducer
 });
