@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './Input.module.scss';
 
 const Input = (props) => {
-
     let inputElement = null;
 
     switch(props.elementType){
@@ -15,7 +14,7 @@ const Input = (props) => {
                                />;
             break;
         case('select'):
-            const options = props.config.options.map( option => {
+            const options = props.options.map( option => {
                 return <option key={option.value} value={option.value}>{option.displayValue}</option>;
             })
             inputElement = <select 
@@ -46,6 +45,7 @@ const Input = (props) => {
 
     return(
         <div className={styles.Input}>
+            <label>{props.label}</label>
             {inputElement}
         </div>
     );

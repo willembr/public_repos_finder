@@ -22,7 +22,7 @@ const Repositories = (props) => {
 
     return(
         <section className={styles.Repos}>
-            <h1>Repositories</h1>
+            <h1 className="SectionTitle">Repositories</h1>
             {repositories}
             {errorMessage}
         </section>

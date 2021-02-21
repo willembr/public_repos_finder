@@ -14,7 +14,7 @@ class Repos extends Component{
     newSearch(){ 
         if(this.props.user.userName === '') return false;
         return this.props.user.userName !== this.props.match.params.user;
-        }
+    }
 
     getRepos = () => {
             this.props.onSetRepos(this.props.user.userName); 
@@ -26,7 +26,6 @@ class Repos extends Component{
     }
 
     render(){
-        console.log(this.props.loading);
         let content = <Spinner/>;
         if(this.props.user.userName === this.props.match.params.user && this.props.repos && !this.props.loading)
         content = <Repositories 

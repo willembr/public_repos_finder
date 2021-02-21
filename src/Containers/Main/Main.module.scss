@@ -1,8 +1,10 @@
 .Main {
     display: flex;
     flex-flow: row wrap;
+    width:80%;
+    margin: 0 auto;
     & .Title{
-      font-size: 1.6em;
+      font-size: 2em;
       text-align: center;
       flex:1 1 100%;
     }

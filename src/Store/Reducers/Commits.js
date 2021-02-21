@@ -13,8 +13,9 @@ const setReposSuccess = (state, action) => {
                             return commit
     });
     const updateState = {
-        ...state,
-        commits:updatedRepos
+        commits:updatedRepos,
+        loading:false,
+        error:false
     };
     return updateObject(state,updateState);
 };
