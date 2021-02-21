@@ -1,11 +1,11 @@
 .Commit{
     width: 100%;
-    &:nth-of-type(even){
+    &:nth-of-type(odd){
         background-color:#d9e1f2;
     }
 }
 
-@media (min-width: 500px){
+@media (min-width: 1040px){
     .Commit {
         display: -webkit-box;
         display: -moz-box;

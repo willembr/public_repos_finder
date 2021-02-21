@@ -32,11 +32,13 @@
         width: 100%;
         background-color:#4472c4;
         color:#fff;
+        display: none;
     }
+
 }
 
-@media(min-width:500px){
-    .CommitHeader{
+@media(min-width:1040px){
+    .Commits .CommitHeader{
         display: -webkit-box;
         display: -moz-box;
         display: box;
@@ -48,6 +50,7 @@
         -moz-flex-flow: row nowrap;
         flex-flow: row nowrap;
     }  
+
 }
 
 
