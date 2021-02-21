@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../Store/Actions/Index';
 import Repositories from '../../Components/Repositories/Repositories';
+import Spinner from '../../Components/UI/Spinner/Spinner';
 
 
 class Repos extends Component{
@@ -25,8 +26,9 @@ class Repos extends Component{
     }
 
     render(){
-        let content = "";
-        if(this.props.user.userName === this.props.match.params.user && this.props.repos)
+        console.log(this.props.loading);
+        let content = <Spinner/>;
+        if(this.props.user.userName === this.props.match.params.user && this.props.repos && !this.props.loading)
         content = <Repositories 
                              repos={ this.props.repos } 
                              noRepos = { this.props.repos.length <= 0 }
@@ -44,7 +46,8 @@ class Repos extends Component{
 const mapStateToProps = state => {
     return{
         user: state.userRed.user,
-        repos: state.reposRed.repos
+        repos: state.reposRed.repos,
+        loading: state.reposRed.loading
     };
 };
 
