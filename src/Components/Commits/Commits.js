@@ -11,6 +11,7 @@ const Commits = (props) => {
                     </div>;
     return(
         <section className={styles.Commits}>
+            <h1>Commits</h1>
             {headers}
             {commits}                    
         </section>

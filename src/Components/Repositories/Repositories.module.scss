@@ -1,9 +1,11 @@
-.Repositories{
-    display:flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
+.Repos{
     margin: 20px auto;
     width:80%;
+    & .Repos_Container{
+        display:flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+    }
     & .ErrorMessage{
         width: 100%;
         text-align: center;
