@@ -10,7 +10,7 @@ const Commit = (props) => {
         commit_item = props.commit.map( item => <CommitItem>{setCapitalLetter(item)}</CommitItem> );     
     } else { 
         commit_item = <div className={styles.Commit}>
-                {Object.keys(props.commit).map( item => <CommitItem attributes={{'data-header':item}}>{props.commit[item]}</CommitItem> )}
+                {Object.keys(props.commit).map( item => <CommitItem attributes={{'data-header':setCapitalLetter(item)}}>{props.commit[item]}</CommitItem> )}
         </div>
          
     }

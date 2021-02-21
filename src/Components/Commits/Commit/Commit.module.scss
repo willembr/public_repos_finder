@@ -1,5 +1,8 @@
 .Commit{
     width: 100%;
+    &:nth-of-type(even){
+        background-color:#d9e1f2;
+    }
 }
 
 @media (min-width: 500px){

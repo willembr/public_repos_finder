@@ -27,10 +27,11 @@
     width:80%;
     & .CommitCollection{
         overflow: auto;
-        margin-right: -15px;
     }
     & .CommitHeader{
         width: 100%;
+        background-color:#4472c4;
+        color:#fff;
     }
 }
 
