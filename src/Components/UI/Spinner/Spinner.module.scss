@@ -1,18 +1,17 @@
 .Spinner {
     color: #ff8000;
-    font-size: 16px;
+    font-size: 70px;
+    margin: 100px auto;
     text-indent: -9999em;
     overflow: hidden;
     width: 1em;
     height: 1em;
     border-radius: 50%;
-    position: absolute;
-    top: 24%;
-    left: 64%;
-    z-index:100;
-    // -webkit-transform: translateZ(0);
-    // -ms-transform: translateZ(0);
-    // transform: translateZ(0);
+    position: relative;
+    text-indent: -9999em;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
     -webkit-animation: load6 1.7s infinite ease, round 1.7s infinite ease;
     animation: load6 1.7s infinite ease, round 1.7s infinite ease;
   }
