@@ -9,13 +9,13 @@ const initialState = {
 }
 
 const setReposSuccess = (state, action) => {
-    console.log(action);
     const updatedRepos = action.repos.map( repo => {
                             return repo
     });
     const updateState = {
-        ...state,
-        repos:updatedRepos
+        repos:updatedRepos,
+        loading:false,
+        error:false
     };
     return updateObject(state,updateState);
 };

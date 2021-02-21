@@ -1,6 +1,6 @@
 import * as actionTypes from './ActionTypes';
 import Axios from '../../Hoc/Axios';
-import { setDate, setHour, setCapitalLetter } from '../Functions/Output';
+import { setDate, setHour, setCapitalLetter } from '../../Functions/Output';
 
 export const setReposStart = () => { return { type : actionTypes.GET_REPOS_START } };
 export const setReposFail = ( error ) => { return { type : actionTypes.GET_REPOS_FAIL, error : error } };
