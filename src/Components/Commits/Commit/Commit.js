@@ -1,11 +1,24 @@
 import React from 'react';
-import styles from './Commit.modules.scss';
+import styles from './commit.module.scss';
+import CommitItem from './commitItem/commitItem';
+import { setCapitalLetter } from '../../../Functions/Output';
 
 const Commit = (props) => {
-    return(
-        <div className={styles.Commit}>
-
+    let commit_item;
+     
+    if(Array.isArray(props.commit)){
+        commit_item = props.commit.map( item => <CommitItem>{setCapitalLetter(item)}</CommitItem> );     
+    } else { 
+        commit_item = <div className={styles.Commit}>
+                {Object.keys(props.commit).map( item => <CommitItem attributes={{'data-header':item}}>{props.commit[item]}</CommitItem> )}
         </div>
+         
+    }
+
+    return(
+        <>
+            {commit_item}
+        </>
     );
 };
 
