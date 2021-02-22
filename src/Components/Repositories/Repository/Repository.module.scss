@@ -1,55 +1,60 @@
 %content-shared{
-    border:1px solid #eee;
-    box-shadow: 0 2px 3px #ccc;
-    box-sizing: border-box;
+  border:1px solid #eee;
+  box-shadow: 0 2px 3px #ccc;
+  box-sizing: border-box;
 }  
 .Repository{
-    @extend %content-shared;
-    height:179px;
-    flex-basis: 100%;
-    position: relative;
-    box-sizing: border-box;
-    cursor: pointer;
-    margin:10px 20px 10px 0;
-    & .Title{
-        height:30px;
-        overflow: hidden;
-        font-size: 1.4em;
-        text-align: center;
-        margin:13px 0 0;
-        padding: 0 40px;
-    }
-    & .Description{
-        height: 35px;
-        overflow: hidden;
-        margin: 0 0 -3px;
-        padding: 10px 27px;
-        text-align: center;
-        & i {
-            color:#bbb;
-        }
-    }
-    & .CreationDate{
-        @extend %content-shared;
-        background-color: #eee;
-        font-size: 0.9em;
-        margin-top:32px;
-        text-align: center;
-    }
+  @extend %content-shared;
+  flex-basis: 100%;
+  position: relative;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin:0.6em 0 0.6em;
+  display: flex;
+  flex-flow: column nowrap;
+  & .Title{
+      overflow: hidden;
+      font-size: 1em;
+      text-align: center;
+      margin:1.5em 0 0;
+      padding: 0 0.5em;
+  }
+  & .Description{
+      overflow: hidden;
+      margin: 1.5em 0;
+      padding: 0.6em 1.8em;
+      text-align: center;
+      word-break: break-all;
+      & i {
+          color:#bbb;
+      }
+  }
+  & .CreationDate{
+      @extend %content-shared;
+      background-color: #eee;
+      font-size: 0.9em;
+      margin-top:auto;
+      text-align: center;
+  }
 }
-
-@media(max-width: 1332px) {
-    .Repository {
-      flex-basis: 45%;
-    }
+@media(max-width: 50em) {
+  .Repository {
+    flex-basis: 100%;
   }
-  @media(max-width: 815px) {
-    .Repository {
-      flex-basis: 100%;
-    }
+}
+@media(min-width: 50em) {
+  .Repository {
+    flex-basis: 45%;
+    margin:0.6em 1.25em 0.6em 0;
   }
-  @media(min-width: 1334px) {
-    .Repository {
-      flex-basis:30%;
-    }
+}
+@media(min-width:112em) {
+  .Repository {
+    flex-basis:30%;
+    & .Title{
+      font-size: 1.4em;
+      margin:0.8em 0 0;
+      padding: 0 2.5em;
   }
+  }
+}

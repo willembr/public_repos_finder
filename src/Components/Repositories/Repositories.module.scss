@@ -1,6 +1,6 @@
 .Repos{
-    margin: 20px auto;
-    width:80%;
+    margin: 1.25em auto;
+    width:100%;
     & .Repos_Container{
         display:flex;
         flex-flow: row wrap;
@@ -11,3 +11,8 @@
         text-align: center;
     }
 }
+
+@media(min-width:50em){ .Repos{ margin:0 0 0 3em;} }
+@media(min-width:65em){ .Repos{ margin:0 0 0 4em;} }
+@media(min-width:75em){ .Repos{ margin:0 0 0 5em;} }
+@media(min-width:100em){ .Repos{ margin:0 0 0 6.5em;} }

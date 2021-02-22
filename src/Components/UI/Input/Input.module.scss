@@ -2,24 +2,28 @@
     width:90%;
     box-sizing:border-box;
     margin: 0 auto;
-}
-
-.Label{
-    font-weight: bold;
-    display: block;
-}
-
-.InputElement{
-    outline:none;
-    border: 1px solid #ccc;
-    background-color: white;
-    font:inherit;
-    padding:6px 10px;
-    display:block;
-    box-sizing: border-box;
-    margin: 0 10px;
-    &:focus{
+    & .Label{
+        font-weight: bold;
+        display: block;
+    }
+    & .InputElement{
         outline:none;
-        background-color:#ccc;
+        border: 1px solid #ccc;
+        background-color: white;
+        font:inherit;
+        padding:0.9em 0.6em;
+        display:block;
+        box-sizing: border-box;
+        margin: 0 0.6em;
+        &:focus{
+            outline:none;
+            background-color:#ccc;
+        }
+    }
+}
+
+@media(min-width:65em){
+    .Input .InputElement{
+        padding:0.45em 0.6em;
     }
 }

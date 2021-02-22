@@ -12,12 +12,13 @@ class Repos extends Component{
     componentDidUpdate(){ if(this.newSearch()) this.getRepos() }
 
     newSearch(){ 
-        if(this.props.user.userName === '') return false;
+        if(!this.props.user) return false;
         return this.props.user.userName !== this.props.match.params.user;
     }
 
     getRepos = () => {
-            this.props.onSetRepos(this.props.user.userName); 
+            const userName = this.props.user ? this.props.user.userName : this.props.match.params.user;;
+            this.props.onSetRepos(userName); 
     }
 
 
@@ -27,7 +28,7 @@ class Repos extends Component{
 
     render(){
         let content = <Spinner/>;
-        if(this.props.user.userName === this.props.match.params.user && this.props.repos && !this.props.loading)
+        if(this.props.repos && !this.props.loading)
         content = <Repositories 
                              repos={ this.props.repos } 
                              noRepos = { this.props.repos.length <= 0 }
@@ -44,7 +45,7 @@ class Repos extends Component{
 
 const mapStateToProps = state => {
     return{
-        user: state.userRed.user,
+        user: state.userRed.user ? state.userRed.user : null,
         repos: state.reposRed.repos,
         loading: state.reposRed.loading
     };
