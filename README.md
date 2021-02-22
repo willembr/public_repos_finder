@@ -22,7 +22,7 @@ Commits page => This page returns all the commits from the clicked repository
 
 The application is made responsive.
 
-ES6+ Functions
+# ES6+ Functions
 
 - Default parameters inside reducers
 
