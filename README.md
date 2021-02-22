@@ -1,71 +1,50 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Run application 
 
-## Available Scripts
+You will find the public_repos_finder application on https://public-repos-finder.netlify.app/
 
-In the project directory, you can run:
+Start/home page => Search section : Ask you to fill in a GitHub userName to search for the repositories linked to that user.
+- The searchbox validates the username by RegExp  (/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i)
+  Provide a warning on wrong input
+- Search button will be enabled on first user input
+- Th search field is always present and enables the user to launch a new search faster.
 
-### `yarn start`
+Repositories page => This page returns all the repositories from the given GitHub user
+- Provides a warning when there are no repositories
+- All repositories display following information : " title, description, date of creation and hour of creation ".
+- Also requested stars, watchers and Forks amount data to implement this in the repository [for the near future]
+- Every repository is clickable to redirect the user to the commits page and display all Commits
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Commits page => This page returns all the commits from the clicked repository
+- Provided a dropdown box with all the repositories of the github user for better navigation
+- Every commit displays following information : " hash, message, creation date and creation hour ".
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The application is made responsive.
 
-### `yarn test`
+ES6+ Functions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Default parameters inside reducers
 
-### `yarn build`
+const initialState = {
+    commits:null,
+    loading:false,
+    error:false
+}
+const reducer = ( state = initialState, action ) => {}
+// To make sure I always can return a state.... in this case the initial state!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Template literals for Axios to get the necessary request
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+const url = `users/${user}/repos`;
+Axios.get(url)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+// more readable then const url = 'users/ ' + user + '/repos';
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+ 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 # public_repos_finder
