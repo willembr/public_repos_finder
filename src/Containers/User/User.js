@@ -82,7 +82,7 @@ class User extends Component{
 
          if(this.props.error) errorMessage = "We couldn't found any Github user, please try again!"
 
-         let redirect = this.props.user ? <Redirect to={`/${this.props.user.userName}`} /> : null;
+         const redirect = this.props.user ? <Redirect to={`/${this.props.user.userName}`} /> : null;
          
         return(
             <section className={styles.User}> 

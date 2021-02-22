@@ -5,7 +5,6 @@ import Commit from './Commit/commit';
 import styles from './commits.module.scss';
 
 const Commits = (props) => {
-    console.log('commits-update');
     const title = <div className={styles.CommitTitle}>
                         <h1 className="SectionTitle">Commits</h1>
                         <Input 

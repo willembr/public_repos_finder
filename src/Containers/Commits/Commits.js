@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../Store/Actions/Index';
 import CommitsComp from '../../Components/Commits/commits';
-
+import { Redirect } from 'react-router-dom';
 
 class Commits extends Component{
     state= {
@@ -50,7 +50,7 @@ class Commits extends Component{
 
     render(){
         let commits = "";
-        if(this.props.commits){
+        if(this.props.commits && this.props.repos){
                commits = <CommitsComp 
                                 commits = { this.props.commits }
                                 changed = { (event) => this.onChangeRepositoryHandler(event) }
@@ -59,10 +59,12 @@ class Commits extends Component{
                                 repos = { this.props.repos.map( repo => ({ value : repo.title, displayValue : repo.title}))}
                                 loading = { this.props.loading}
                         /> 
-        }                                                
+        }  
+        const redirect = !this.props.repos ? <Redirect to={`/`} /> : null;                                        
         return(
             <>
                 {commits}
+                {redirect}
             </>
         );
     }
@@ -72,7 +74,7 @@ const mapStateToProps = state => {
     return{
         commits : state.commitsRed.commits,
         loading: state.commitsRed.loading,
-        repos: state.reposRed.repos      
+        repos: state.reposRed.repos ? state.reposRed.repos : null      
     }
 }
 
